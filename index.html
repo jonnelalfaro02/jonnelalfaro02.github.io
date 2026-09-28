@@ -1,0 +1,379 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Credit Repair Tech VA: dispute management and GoHighLevel automation for U.S. credit repair businesses.">
+<title>Jonnel Alfaro</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=Public+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+:root{
+  --bg:#F3F5F2; --surface:#FFFFFF; --ink:#14211F; --muted:#56635F; --line:#D9DFDA;
+  --accent:#0E6B5C; --accent-ink:#FFFFFF; --accent-soft:#DDEEE9;
+  --amber:#B7791F; --amber-soft:#F6EAD4; --deleted:#8A948F;
+  --display:"Bricolage Grotesque", "Segoe UI", system-ui, sans-serif;
+  --body:"Public Sans", "Segoe UI", system-ui, sans-serif;
+  --mono:"IBM Plex Mono", ui-monospace, Menlo, Consolas, monospace;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#0F1614; --surface:#17211E; --ink:#E6ECE9; --muted:#9AA8A3; --line:#2A3833;
+    --accent:#3FB39B; --accent-ink:#0B1412; --accent-soft:#18332D;
+    --amber:#E0A94A; --amber-soft:#3A2E17; --deleted:#6F7B77;
+    color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#0F1614; --surface:#17211E; --ink:#E6ECE9; --muted:#9AA8A3; --line:#2A3833;
+  --accent:#3FB39B; --accent-ink:#0B1412; --accent-soft:#18332D;
+  --amber:#E0A94A; --amber-soft:#3A2E17; --deleted:#6F7B77;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font:400 16px/1.6 var(--body);padding-inline:20px;padding-block:0 48px}
+.wrap{max-width:1080px;margin:0 auto}
+a{color:var(--accent)}
+a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+h1,h2,h3{font-family:var(--display);line-height:1.1;text-wrap:balance;margin:0}
+.label{font:500 12px/1.4 var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+
+/* nav */
+nav{display:flex;justify-content:flex-end;align-items:center;gap:16px;padding-block:22px;flex-wrap:wrap}
+.brand{font:700 18px/1 var(--display);letter-spacing:-.01em;color:var(--ink);text-decoration:none}
+.navlinks{display:flex;gap:20px;flex-wrap:wrap}
+.navlinks a{color:var(--muted);text-decoration:none;font-size:14px;font-weight:500}
+.navlinks a:hover{color:var(--ink)}
+
+/* hero */
+.hero{display:grid;grid-template-columns:1.15fr 1fr;gap:48px;align-items:center;padding-block:40px 64px}
+.hero h1{font-size:clamp(38px,6vw,64px);font-weight:700;letter-spacing:-.025em}
+.hero h1 em{font-style:normal;color:var(--accent)}
+.lede{font-size:18px;color:var(--muted);max-width:52ch;margin:20px 0 28px}
+.ctas{display:flex;gap:12px;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:12px 20px;border-radius:8px;font:600 15px/1 var(--body);text-decoration:none;border:1px solid transparent;cursor:pointer}
+.btn-primary{background:var(--accent);color:var(--accent-ink)}
+.btn-ghost{border-color:var(--line);color:var(--ink);background:transparent}
+.btn-ghost:hover{border-color:var(--ink)}
+.facts{display:flex;gap:28px;flex-wrap:wrap;margin-top:32px}
+.facts b{display:block;font:700 26px/1 var(--display);color:var(--ink)}
+.facts span{font-size:13px;color:var(--muted)}
+
+/* dispute tracker card */
+.tracker{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:20px;box-shadow:0 12px 32px -18px rgba(20,33,31,.35)}
+.tracker-head{display:flex;justify-content:space-between;align-items:baseline;gap:12px;margin-bottom:14px;flex-wrap:wrap}
+.tracker-head h3{font-size:17px}
+.tbl{width:100%;border-collapse:collapse;font-size:13px}
+.tbl th{font:500 11px/1.4 var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--muted);text-align:left;padding:8px 6px;border-bottom:1px solid var(--line)}
+.tbl td{padding:10px 6px;border-bottom:1px solid var(--line);vertical-align:middle}
+.tbl tr:last-child td{border-bottom:0}
+.pill{display:inline-block;font:500 11px/1 var(--mono);padding:5px 7px;border-radius:4px;white-space:nowrap}
+.p-del{background:var(--accent-soft);color:var(--accent)}
+.p-open{background:var(--amber-soft);color:var(--amber)}
+.p-ver{background:transparent;color:var(--deleted);border:1px dashed var(--line)}
+.tracker-foot{margin-top:12px;font-size:12px;color:var(--muted)}
+
+/* sections */
+section{padding-block:56px;border-top:1px solid var(--line)}
+.sec-head{display:grid;grid-template-columns:220px 1fr;gap:32px;margin-bottom:32px}
+.sec-head h2{font-size:clamp(28px,3.6vw,38px);letter-spacing:-.02em}
+.sec-head p{color:var(--muted);max-width:60ch;margin:10px 0 0}
+
+.services{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.svc{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:28px}
+.svc h3{font-size:22px;margin:8px 0 14px}
+.svc ul{margin:0;padding:0;list-style:none;display:grid;gap:10px}
+.svc li{padding-left:22px;position:relative}
+.svc li::before{content:"";position:absolute;left:0;top:.62em;width:10px;height:2px;background:var(--accent)}
+.tools{display:flex;flex-wrap:wrap;gap:8px;margin-top:20px}
+.tools span{font:500 12px/1 var(--mono);padding:7px 9px;border:1px solid var(--line);border-radius:4px;color:var(--muted)}
+
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;counter-reset:s}
+.step{border-top:2px solid var(--ink);padding-top:14px}
+.step .label{color:var(--accent)}
+.step h3{font-size:18px;margin:6px 0 8px}
+.step p{margin:0;color:var(--muted);font-size:15px}
+
+.jobs{display:grid;gap:0}
+.job{display:grid;grid-template-columns:220px 1fr;gap:32px;padding-block:20px;border-bottom:1px solid var(--line)}
+.job:last-child{border-bottom:0}
+.job .when{font:400 13px/1.5 var(--mono);color:var(--muted);font-variant-numeric:tabular-nums}
+.job h3{font-size:19px}
+.job .org{color:var(--muted);font-size:15px;margin:2px 0 8px}
+.job p{margin:0;max-width:62ch}
+
+/* contact */
+.contact{display:grid;grid-template-columns:1fr 1.1fr;gap:32px;align-items:start}
+.contact-card{background:var(--ink);color:var(--bg);border-radius:12px;padding:32px}
+.contact-card h2{font-size:clamp(28px,3.6vw,38px);letter-spacing:-.02em;color:var(--bg)}
+.contact-card p{color:color-mix(in srgb,var(--bg) 75%,transparent);margin:12px 0 24px}
+.email-row{display:flex;gap:8px;align-items:center;flex-wrap:wrap;background:color-mix(in srgb,var(--bg) 10%,transparent);border-radius:8px;padding:10px 10px 10px 14px}
+.email-row code{font:500 15px/1.3 var(--mono);color:var(--bg);user-select:all;word-break:break-all;flex:1;min-width:0}
+.copy{background:var(--bg);color:var(--ink);border:0;border-radius:6px;padding:9px 12px;font:600 13px/1 var(--body);cursor:pointer}
+.contact-links{display:grid;gap:10px;margin-top:20px}
+.contact-links a{color:var(--bg);font-weight:500}
+.meta{margin-top:20px;font-size:13px;color:color-mix(in srgb,var(--bg) 65%,transparent)}
+
+form{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:28px;display:grid;gap:16px}
+form h3{font-size:20px}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.field{display:grid;gap:6px}
+.field label{font-size:13px;font-weight:600}
+input,textarea,select{font:400 15px/1.4 var(--body);color:var(--ink);background:var(--bg);border:1px solid var(--line);border-radius:8px;padding:11px 12px;width:100%}
+textarea{min-height:120px;resize:vertical}
+.form-actions{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.note{font-size:13px;color:var(--muted);margin:0}
+.status{font-size:14px;color:var(--accent);font-weight:600;min-height:1.4em;margin:0}
+.preview{white-space:pre-wrap;font:400 13px/1.5 var(--mono);background:var(--bg);border:1px solid var(--line);border-radius:8px;padding:12px;color:var(--ink);max-height:220px;overflow:auto}
+
+footer{padding-top:32px;border-top:1px solid var(--line);display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;font-size:13px;color:var(--muted)}
+
+@media (max-width:860px){
+  .hero,.contact{grid-template-columns:1fr}
+  .sec-head,.job{grid-template-columns:1fr;gap:8px}
+  .services{grid-template-columns:1fr}
+  .steps{grid-template-columns:1fr 1fr}
+}
+@media (max-width:520px){
+  .steps,.row{grid-template-columns:1fr}
+  .navlinks{gap:14px}
+  .tbl th:nth-child(3),.tbl td:nth-child(3){display:none}
+}
+@media (prefers-reduced-motion:no-preference){
+  .btn,.copy{transition:transform .15s ease,border-color .15s ease}
+  .btn:hover,.copy:hover{transform:translateY(-1px)}
+}
+</style>
+<style>body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
+</head>
+<body>
+
+<div class="wrap">
+  <nav>
+    <div class="navlinks">
+      <a href="#services">Services</a>
+      <a href="#process">How I work</a>
+      <a href="#experience">Experience</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </nav>
+
+  <header class="hero" id="top">
+    <div>
+      <div class="label">Credit Repair Tech VA · Remote from the Philippines</div>
+      <h1 style="margin-top:14px">Disputes handled. <em>Systems automated.</em> More time for your business.</h1>
+      <p class="lede">I'm a credit repair Dispute Manager with 7+ years of hands-on experience, and a GoHighLevel Tech VA. I help U.S. credit repair owners run cleaner dispute rounds and automate the client follow-up that eats their week.</p>
+      <div class="ctas">
+        <a class="btn btn-primary" href="#contact">Work with me</a>
+        <a class="btn btn-ghost" href="https://www.linkedin.com/in/jonnelalfaro" target="_blank" rel="noopener">View LinkedIn</a>
+      </div>
+      <div class="facts">
+        <div><b>7+ yrs</b><span>in credit repair disputes</span></div>
+        <div><b>3</b><span>bureaus: EQ · EX · TU</span></div>
+        <div><b>GHL + CRC</b><span>GoHighLevel &amp; Credit Repair Cloud</span></div>
+      </div>
+    </div>
+
+    <aside class="tracker" aria-label="Example dispute round tracker">
+      <div class="tracker-head">
+        <h3>Round 2 · Client file</h3>
+        <span class="label">Example</span>
+      </div>
+      <table class="tbl">
+        <thead><tr><th>Item</th><th>Bureau</th><th>Basis</th><th>Status</th></tr></thead>
+        <tbody>
+          <tr><td>Collection</td><td>Experian</td><td>Unverifiable</td><td><span class="pill p-del">Deleted</span></td></tr>
+          <tr><td>Charge-off</td><td>Equifax</td><td>Inaccurate balance</td><td><span class="pill p-open">In dispute</span></td></tr>
+          <tr><td>30-day late</td><td>TransUnion</td><td>Wrong date</td><td><span class="pill p-del">Corrected</span></td></tr>
+          <tr><td>Hard inquiry</td><td>Experian</td><td>Not authorized</td><td><span class="pill p-open">In dispute</span></td></tr>
+          <tr><td>Medical coll.</td><td>TransUnion</td><td>Outdated</td><td><span class="pill p-ver">Verified</span></td></tr>
+        </tbody>
+      </table>
+      <p class="tracker-foot">Every round is tracked per item and per bureau, and the strategy changes based on each response.</p>
+    </aside>
+  </header>
+
+  <section id="services">
+    <div class="sec-head">
+      <div class="label">Services</div>
+      <div>
+        <h2>Two skill sets, one VA</h2>
+        <p>Most VAs know the tools or the industry. I know both, so you don't have to explain how credit repair works before I can help.</p>
+      </div>
+    </div>
+    <div class="services">
+      <div class="svc">
+        <div class="label">Credit repair operations</div>
+        <h3>Dispute management</h3>
+        <ul>
+          <li>Credit report analysis across Equifax, Experian, and TransUnion</li>
+          <li>Dispute letters in Credit Repair Cloud for collections, charge-offs, late payments, inquiries, and bankruptcies</li>
+          <li>Dispute round management and tracking of bureau and creditor responses</li>
+          <li>FCRA-based dispute strategies for inaccurate, outdated, or unverifiable items</li>
+          <li>Support with client workflows and daily operations</li>
+        </ul>
+        <div class="tools"><span>Credit Repair Cloud</span><span>FCRA</span><span>Credit Report Analysis</span><span>Dispute Letters</span></div>
+      </div>
+      <div class="svc">
+        <div class="label">Tech VA</div>
+        <h3>GoHighLevel setup &amp; automation</h3>
+        <ul>
+          <li>CRM pipelines, funnels, forms, and booking calendars</li>
+          <li>Email and SMS automations for onboarding, reminders, and follow-ups</li>
+          <li>Lead-to-client systems so nobody falls through the cracks</li>
+          <li>Admin and tech support so you can focus on sales and growth</li>
+        </ul>
+        <div class="tools"><span>GoHighLevel</span><span>Workflow Automation</span><span>Funnel Building</span><span>Google Workspace</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="process">
+    <div class="sec-head">
+      <div class="label">How I work</div>
+      <div>
+        <h2>From new lead to monthly update</h2>
+        <p>The client journey I support, start to finish.</p>
+      </div>
+    </div>
+    <div class="steps">
+      <div class="step"><div class="label">Step 1</div><h3>Capture &amp; onboard</h3><p>Leads come in through your GHL funnel and get automatic welcome messages, forms, and booking links.</p></div>
+      <div class="step"><div class="label">Step 2</div><h3>Audit the reports</h3><p>I review all three bureau reports and flag every inaccurate, outdated, or unverifiable item.</p></div>
+      <div class="step"><div class="label">Step 3</div><h3>Run dispute rounds</h3><p>Letters go out in Credit Repair Cloud, and each bureau response shapes the next round.</p></div>
+      <div class="step"><div class="label">Step 4</div><h3>Keep clients updated</h3><p>Automated progress updates and reminders keep clients informed and engaged.</p></div>
+    </div>
+  </section>
+
+  <section id="experience">
+    <div class="sec-head">
+      <div class="label">Experience</div>
+      <div><h2>Where I've done this work</h2></div>
+    </div>
+    <div class="jobs">
+      <div class="job">
+        <div class="when">Jun 2018 – Present</div>
+        <div><h3>Credit Repair Specialist / Dispute Manager</h3><div class="org">Money Management Academy · United States (remote)</div>
+        <p>Analyze client credit reports from all three bureaus, create and send dispute letters in Credit Repair Cloud across multiple rounds, and adjust strategy based on bureau and creditor responses.</p></div>
+      </div>
+      <div class="job">
+        <div class="when">Sep 2019 – Present</div>
+        <div><h3>Tech Virtual Assistant, GoHighLevel &amp; Credit Repair Systems</h3><div class="org">Self-employed · Remote</div>
+        <p>Set up and manage GoHighLevel pipelines, funnels, forms, and calendars. Build email and SMS automations for lead follow-up and onboarding for credit repair businesses and startups.</p></div>
+      </div>
+      <div class="job">
+        <div class="when">Oct 2019 – Present</div>
+        <div><h3>Virtual Assistant, Online Arbitrage</h3><div class="org">Legendary VAs · Remote</div>
+        <p>Product research, inventory sourcing, and listing management for online resale.</p></div>
+      </div>
+      <div class="job">
+        <div class="when">2014 – 2018</div>
+        <div><h3>Quality Assurance &amp; Auditing</h3><div class="org">Integrated Packaging Corporation · MASA Inc.</div>
+        <p>Quality inspections, record audits, and compliance reviews. That background is why I care so much about accurate details.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="contact">
+      <div class="contact-card">
+        <div class="label" style="color:inherit;opacity:.7">Contact</div>
+        <h2 style="margin-top:10px">Let's talk about your business</h2>
+        <p>Available for full-time, part-time, or project-based remote work with U.S. credit repair companies and startups.</p>
+        <div class="email-row">
+          <code id="email">jonnelalfaro02@gmail.com</code>
+          <button class="copy" id="copyEmail" type="button">Copy email</button>
+        </div>
+        <div class="contact-links">
+          <a href="https://www.linkedin.com/in/jonnelalfaro" target="_blank" rel="noopener">Message me on LinkedIn →</a>
+        </div>
+        <div class="meta">Based in Santa Maria, Bulacan, Philippines (GMT+8). I can work U.S. business hours.</div>
+      </div>
+
+      <form id="inquiry" novalidate>
+        <h3>Write your inquiry</h3>
+        <p class="note">Fill this in, then copy it into an email or LinkedIn message.</p>
+        <div class="row">
+          <div class="field"><label for="f-name">Your name</label><input id="f-name" autocomplete="name" placeholder="Jane Smith"></div>
+          <div class="field"><label for="f-company">Company</label><input id="f-company" autocomplete="organization" placeholder="Smith Credit Solutions"></div>
+        </div>
+        <div class="field"><label for="f-need">What do you need help with?</label>
+          <select id="f-need">
+            <option>Dispute management</option>
+            <option>GoHighLevel setup &amp; automation</option>
+            <option>Both disputes and GoHighLevel</option>
+            <option>Admin / general VA support</option>
+          </select>
+        </div>
+        <div class="field"><label for="f-msg">Message</label><textarea id="f-msg" placeholder="Tell me about your business, how many clients you manage, and the hours you need."></textarea></div>
+        <div class="form-actions">
+          <button class="btn btn-primary" type="submit">Copy my message</button>
+          <a class="btn btn-ghost" id="mailLink" href="mailto:jonnelalfaro02@gmail.com">Open email app</a>
+        </div>
+        <p class="status" id="status" role="status"></p>
+        <div class="preview" id="preview" hidden></div>
+      </form>
+    </div>
+  </section>
+
+  <footer>
+    <span>© 2026 Jonnel Alfaro · Credit Repair Tech VA</span>
+    <span>Dispute work follows FCRA guidelines. No deletions are promised or guaranteed.</span>
+  </footer>
+</div>
+
+<script>
+(function(){
+  function copyText(text, el){
+    function fallback(){
+      if(!el) return false;
+      var r=document.createRange(); r.selectNodeContents(el);
+      var s=window.getSelection(); s.removeAllRanges(); s.addRange(r);
+      return false;
+    }
+    try{
+      if(navigator.clipboard && navigator.clipboard.writeText){
+        return navigator.clipboard.writeText(text).then(function(){return true},function(){return fallback()});
+      }
+    }catch(e){}
+    return Promise.resolve(fallback());
+  }
+  var emailBtn=document.getElementById('copyEmail');
+  emailBtn.addEventListener('click',function(){
+    copyText('jonnelalfaro02@gmail.com',document.getElementById('email')).then(function(ok){
+      emailBtn.textContent = ok ? 'Copied' : 'Selected, press Ctrl+C';
+      setTimeout(function(){emailBtn.textContent='Copy email'},2200);
+    });
+  });
+
+  var form=document.getElementById('inquiry'), status=document.getElementById('status'),
+      preview=document.getElementById('preview'), mail=document.getElementById('mailLink');
+  function build(){
+    var n=document.getElementById('f-name').value.trim(),
+        c=document.getElementById('f-company').value.trim(),
+        need=document.getElementById('f-need').value,
+        m=document.getElementById('f-msg').value.trim();
+    var body='Hi Jonnel,\n\n'+(m||'I would like to talk about working together.')+
+      '\n\nI need help with: '+need+'\n\n'+(n||'')+(c?'\n'+c:'');
+    var subject='Inquiry: '+need+(c?' – '+c:'');
+    mail.href='mailto:jonnelalfaro02@gmail.com?subject='+encodeURIComponent(subject)+'&body='+encodeURIComponent(body);
+    return {subject:subject, body:body};
+  }
+  form.addEventListener('input',build);
+  form.addEventListener('submit',function(e){
+    e.preventDefault();
+    var msg=build();
+    var full='To: jonnelalfaro02@gmail.com\nSubject: '+msg.subject+'\n\n'+msg.body;
+    preview.textContent=full; preview.hidden=false;
+    copyText(full,preview).then(function(ok){
+      status.textContent = ok
+        ? 'Copied. Paste it into an email to jonnelalfaro02@gmail.com or a LinkedIn message.'
+        : 'Your message is selected below. Copy it, then send it to jonnelalfaro02@gmail.com.';
+    });
+  });
+  build();
+})();
+</script>
+
+</body>
+</html>
